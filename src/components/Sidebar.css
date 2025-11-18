@@ -1,0 +1,57 @@
+/* ---- Base Sidebar ---- */
+.sidebar {
+  width: 180px;
+  height: 100vh;
+  background: #0F0E9A;
+  color: white;
+  position: fixed;
+  left: 0;
+  top: 0;
+  padding: 60px 20px 20px;  /* <-- FIXED */
+  transform: translateX(-100%);
+  transition: 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.open {
+  transform: translateX(0);
+}
+
+.brand {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.menu a {
+  display: block;
+  padding: 14px 0;    /* more spacing */
+  color: #ddd;
+  text-decoration: none;
+  font-size: 18px;    /* increase readability */
+}
+
+
+.menu a:hover {
+  color: white;
+}
+
+/* ---- Overlay (mobile only) ---- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  display: none;
+  z-index: 900;
+}
+
+.overlay.show {
+  display: block;
+}
+
+/* Desktop removes overlay */
+@media (min-width: 768px) {
+  .overlay {
+    display: none !important;
+  }
+}

@@ -1,0 +1,56 @@
+body{
+  background-color: #fff;
+}
+.App {
+  font-family: Arial, sans-serif;
+}
+
+.hamburger {
+  font-size: 28px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  position: fixed;
+  top: 15px;
+  left: 15px;   /* <-- Adjust */
+  z-index: 1100;
+  color: #0F0E9A;
+}
+
+.hamburger.shift {
+  color: white; /* when sidebar open */
+}
+
+
+/* Show hamburger on desktop too */
+@media (min-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
+
+.content {
+  padding: 20px;
+  transition: margin-left 0.3s;
+  color: black;
+  height: 100%;
+  width: 100vw;
+}
+
+.content.shift {
+  margin-left: 250px; /* when sidebar is open */
+}
+
+
+.d-flex{
+  display: flex !important;
+} 
+
+.align-items-center{
+  align-items: center !important;
+} 
+
+.justify-content-center{
+  justify-content: center !important;
+}
