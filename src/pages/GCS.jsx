@@ -26,13 +26,16 @@ const GCS = () => {
         <CsvUploader />
       ) : (
         <>
-          <div
-            style={{ height: "100%" }}
-            className="d-flex align-items-center justify-content-center"
-          >
-            <button onClick={() => getGCSData()}>Get Data</button>
+          <div className="d-flex align-items-center justify-content-center">
+            <button
+              style={{ background: "black", color: "white" }}
+              onClick={() => getGCSData()}
+            >
+              Get Data
+            </button>
             &nbsp;
             <button
+              style={{ background: "black", color: "white" }}
               onClick={() => {
                 setShowUpload(true);
               }}
@@ -40,7 +43,11 @@ const GCS = () => {
               Upload Data
             </button>
           </div>
-          {csvData && csvData.length >= 1 && <GcsCsvTable csvData={csvData} />}
+          {csvData && csvData.length >= 1 && (
+            <div style={{ marginTop: "1rem", width: "100%", height: "80vh" }}>
+              <GcsCsvTable csvData={csvData} />
+            </div>
+          )}
         </>
       )}
     </div>

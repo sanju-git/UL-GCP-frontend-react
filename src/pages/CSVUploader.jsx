@@ -29,7 +29,7 @@ function CsvUploader() {
       await uploadCSVToGCS(formData)
         .then((response) => {
           if (response && response.success) {
-            setMessage(response.data.message);
+            setMessage("File uploaded successfully.");
           }
         })
         .catch((error) => {
@@ -59,7 +59,16 @@ function CsvUploader() {
           }}
         >
           <input type="file" accept=".csv" onChange={handleFileChange} />
-          <button onClick={handleUpload}>Upload</button>
+          <button
+            style={{
+              border: "1px solid black",
+              backgroundColor: "black",
+              color: "white",
+            }}
+            onClick={handleUpload}
+          >
+            Upload
+          </button>
           {message && <p>{message}</p>}
         </div>
       </div>
