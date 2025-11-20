@@ -1,7 +1,7 @@
 // const backend_URL = "http://localhost:8080/";
 const token = localStorage.getItem("authToken");
 const backend_URL =
-  "https://ul-gcp-backend-node-1076232659917.europe-west3.run.app/";
+"https://ul-gcp-backend-node-1076232659917.europe-west3.run.app/";
 
 export const fetchGCSData = async () => {
   const url = backend_URL + "api/get-gcs-data";
@@ -9,7 +9,8 @@ export const fetchGCSData = async () => {
   const response = await fetch(url, {
     method: "GET",
     headers: {
-      Authorization: `Bearer ${token}`,
+      "Content-Type": "application/json",
+      // Authorization: `Bearer ${token}`,
     },
   });
 
@@ -26,9 +27,9 @@ export const uploadCSVToGCS = async (formData) => {
   const url = backend_URL + "api/upload-csv";
   const response = await fetch(url, {
     method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
+    // headers: {
+    //   Authorization: `Bearer ${token}`,
+    // },
     body: formData,
   });
 
