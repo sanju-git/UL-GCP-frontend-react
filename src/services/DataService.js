@@ -1,7 +1,7 @@
-const backend_URL = "http://localhost:8080/";
+// const backend_URL = "http://localhost:8080/";
 const token = localStorage.getItem("authToken");
-// const backend_URL =
-// "https://ul-gcp-backend-node-1076232659917.europe-west3.run.app/";
+const backend_URL =
+"https://ul-gcp-backend-node-1076232659917.europe-west3.run.app/";
 
 export const fetchGCSData = async () => {
   const url = backend_URL + "api/get-gcs-data";
