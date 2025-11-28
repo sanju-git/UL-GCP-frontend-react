@@ -69,7 +69,7 @@ const MainLayout = () => {
         )}
 
         <div style={{ flex: 1, textAlign: "center", pointerEvents: "none" }}>
-          <strong style={{ fontSize: "16px" }}>UL GCP Dashboard</strong>
+          <strong style={{ fontSize: "16px" }}>GCP Test Connections</strong>
         </div>
 
         <div style={{ width: 40 }} />

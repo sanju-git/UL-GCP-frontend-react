@@ -10,7 +10,6 @@ function CloudSQL() {
   useEffect(() => {
     const load = async () => {
       const products = await fetchSQLData();
-      console.log(products.data)
       setCodes(products.data);
 
     };
