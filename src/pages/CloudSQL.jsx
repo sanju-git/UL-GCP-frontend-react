@@ -37,7 +37,7 @@ function CloudSQL() {
 
   return (
     <div>
-      <h1>Product Table Details</h1>
+      <h1>Product Mapping Table</h1>
 
       {/* Dropdown */}
       <select onChange={handleCodeSelect}>

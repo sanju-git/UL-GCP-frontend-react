@@ -82,3 +82,82 @@ export const updateProductName = async (productcode, newName) => {
 
   return await response.json(); 
 };
+
+export const fetchUCProductCodes = async () => {
+  const url = backend_URL + "api/get-uc-codes";
+
+  const response = await fetch(url, { method: "GET" });
+
+  if (!response.ok) {
+  throw new Error("Failed to fetch UC product codes");
+  }
+
+  const data = await response.json();
+  console.log("Data", data)
+  return data;
+};
+
+export const fetchUCProductName = async (productCode) => {
+  const url = backend_URL + `api/get-uc-data/${productCode}`;
+
+  const response = await fetch(url, { method: "GET" });
+
+  if (!response.ok) {
+  throw new Error("Failed to fetch UC product name");
+  }
+
+  const data = await response.json();
+  return data.name; 
+};
+
+// export const fetchUCProductCodes = async () => {
+//   return await fetch("/api/get-uc-codes").then((res) => res.json());
+// };
+
+// export const fetchUCProductName = async (code) => {
+//   return await fetch(`/api/get-uc-data/${code}`).then((res) => res.json());
+// };
+
+export const updateUCProductName = async (code, name) => {
+  return await fetch(`/api/update-uc-data/${code}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ newName: name }),
+  }).then((res) => res.json());
+};
+
+export const fetchUCProductMappingData = async () => {
+  const url = backend_URL + "api/get-uc-data";
+
+  const response = await fetch(url, {
+    method: "GET",
+  });
+
+  if (!response.ok) {
+    throw new Error(`Error fetching GCS data: ${response.statusText}`);
+  }
+
+  const data = await response.json();
+  return data;
+};
+
+
+
+export const insertUCProductMappingData = async (body) => {
+  const url = backend_URL + "api/insert-uc-data";
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(body),
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to insert product");
+  }
+
+  return await response.json();
+};
+
+
+
