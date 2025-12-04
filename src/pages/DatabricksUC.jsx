@@ -70,7 +70,7 @@ const UCData = () => {
 
         <button
           style={{ background: "green", color: "white", padding: "8px 16px" }}
-          // onClick={() => setShowInsertForm(!showInsertForm)}
+          onClick={() => setShowInsertForm(!showInsertForm)}
         >
           Insert Product Mapping
         </button>
