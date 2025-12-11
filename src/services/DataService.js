@@ -160,4 +160,20 @@ export const insertUCProductMappingData = async (body) => {
 };
 
 
+export const callDatabricksJob = async () => {
+  const url = backend_URL + "api/run-databricks-job";
+
+  const response = await fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+  });
+
+  if (!response.ok) {
+    throw new Error("Failed to trigger Databricks job");
+  }
+
+  return await response.json();
+};
+
+
 

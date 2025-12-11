@@ -2,6 +2,7 @@ import { useState } from "react";
 import {
   fetchUCProductMappingData,
   insertUCProductMappingData,
+  callDatabricksJob,   
 } from "../services/DataService";
 
 const UCData = () => {
@@ -17,7 +18,6 @@ const UCData = () => {
   const getUCData = async () => {
     try {
       const response = await fetchUCProductMappingData();
-
       if (response?.data?.length >= 1) {
         setUCData(response.data);
       }
@@ -36,7 +36,6 @@ const UCData = () => {
       alert("Product inserted successfully!");
       setExternalName("");
       setGlobalCode("");
-
       setShowInsertForm(false);
       getUCData(); // refresh table after insert
     } catch (err) {
@@ -45,9 +44,18 @@ const UCData = () => {
     }
   };
 
+  const handleCallDatabricksJob = async () => {
+    try {
+      const result = await callDatabricksJob();
+      alert("Databricks job triggered successfully!\nRun ID: " + result.result.run_id);
+    } catch (err) {
+      console.error(err);
+      alert("Failed to trigger Databricks job");
+    }
+  };
+
   return (
     <div style={{ padding: "1rem" }}>
-      {/* Title */}
       <h2 style={{ textAlign: "center", marginBottom: "1.5rem" }}>
         Product Mapping Table
       </h2>
@@ -74,9 +82,17 @@ const UCData = () => {
         >
           Insert Product Mapping
         </button>
+
+        {/* NEW BUTTON */}
+        <button
+          style={{ background: "orange", color: "white", padding: "8px 16px" }}
+          onClick={handleCallDatabricksJob}
+        >
+          Call Databricks Job
+        </button>
       </div>
 
-      {/* INSERT FORM (only visible when button clicked) */}
+      {/* INSERT FORM */}
       {showInsertForm && (
         <div style={{ textAlign: "center", marginBottom: "20px" }}>
           <input
